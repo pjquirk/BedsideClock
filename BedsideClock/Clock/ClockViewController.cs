@@ -22,6 +22,7 @@ namespace BedsideClock.Clock
 			};
 			textView.Font = textView.Font.WithSize(200);
 			textView.AddGestureRecognizer(new UITapGestureRecognizer(ToggleNavigationBarVisibility));
+
 			Add(textView);
 
 			timer = new Timer(1000);
@@ -42,6 +43,7 @@ namespace BedsideClock.Clock
 
 		public override void ViewWillAppear(bool animated)
 		{
+			UpdateClockText();
 			NavigationController.SetNavigationBarHidden(true, animated);
 			NavigationController.NavigationBar.BarStyle = UIBarStyle.Black;
 			base.ViewWillAppear(animated);
