@@ -105,10 +105,13 @@
     <Compile Include="Options\OptionsViewController.cs" />
     <Compile Include="Options\OptionsRootElement.cs" />
     <Compile Include="Clock\ClockViewController.cs" />
+    <Compile Include="Model\Options.cs" />
+    <Compile Include="Model\OptionsSerializer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Options\" />
     <Folder Include="Clock\" />
+    <Folder Include="Model\" />
   </ItemGroup>
 </Project>
