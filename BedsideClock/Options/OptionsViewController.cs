@@ -7,8 +7,8 @@ namespace BedsideClock.Options
 	{
 		static OptionsRootElement root;
 
-		public OptionsViewController()
-			: base(root = new OptionsRootElement())
+		public OptionsViewController(Model.Options options)
+			: base(root = new OptionsRootElement(options))
 		{
 		}
 	}

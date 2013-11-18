@@ -30,7 +30,7 @@ namespace BedsideClock
 			// create a new window instance based on the screen size
 			window = new UIWindow(UIScreen.MainScreen.Bounds);
 
-			var optionsViewController = new Options.OptionsViewController();
+			var optionsViewController = new Options.OptionsViewController(options);
 			rootViewController = new UINavigationController();
 			rootViewController.PushViewController(optionsViewController, false);
 
