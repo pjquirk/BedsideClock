@@ -11,9 +11,6 @@ namespace BedsideClock.Clock
 
 		public ClockViewController()
 		{
-			timer = new Timer(1000);
-			timer.AutoReset = true;
-			timer.Elapsed += HandleElapsed;
 			textView = new UILabel { 
 				BackgroundColor = UIColor.Black,
 				TextColor = UIColor.Green,
@@ -25,8 +22,11 @@ namespace BedsideClock.Clock
 			};
 			textView.Font = textView.Font.WithSize(200);
 			textView.AddGestureRecognizer(new UITapGestureRecognizer(ToggleNavigationBarVisibility));
-
 			Add(textView);
+
+			timer = new Timer(1000);
+			timer.AutoReset = true;
+			timer.Elapsed += HandleElapsed;
 			timer.Enabled = true;
 		}
 
