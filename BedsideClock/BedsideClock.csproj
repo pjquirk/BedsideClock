@@ -107,6 +107,7 @@
     <Compile Include="Clock\ClockViewController.cs" />
     <Compile Include="Model\Options.cs" />
     <Compile Include="Model\OptionsSerializer.cs" />
+    <Compile Include="Options\FontEntryElement.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
