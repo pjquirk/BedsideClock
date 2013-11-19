@@ -11,5 +11,10 @@ namespace BedsideClock.Options
 			: base(root = new OptionsRootElement(options))
 		{
 		}
+
+		public Model.Options GetOptions()
+		{
+			return root.GetOptions();
+		}
 	}
 }

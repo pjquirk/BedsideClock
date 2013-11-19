@@ -16,6 +16,7 @@ namespace BedsideClock
 		// class-level declarations
 		UIWindow window;
 		UINavigationController rootViewController;
+		Options.OptionsViewController optionsViewController;
 		Model.Options options;
 		//
 		// This method is invoked when the application has loaded and is ready to run. In this
@@ -31,7 +32,7 @@ namespace BedsideClock
 			// create a new window instance based on the screen size
 			window = new UIWindow(UIScreen.MainScreen.Bounds);
 
-			var optionsViewController = new Options.OptionsViewController(options);
+			optionsViewController = new Options.OptionsViewController(options);
 			rootViewController = new UINavigationController();
 			rootViewController.PushViewController(optionsViewController, false);
 
@@ -60,7 +61,7 @@ namespace BedsideClock
 		void SaveOptions()
 		{
 			OptionsSerializer serializer = new OptionsSerializer();
-			serializer.Save(options);
+			serializer.Save(optionsViewController.GetOptions());
 		}
 
 		void LoadOptions()
