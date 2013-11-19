@@ -16,6 +16,7 @@ namespace BedsideClock
 		// class-level declarations
 		UIWindow window;
 		UINavigationController rootViewController;
+		Model.Options options;
 		//
 		// This method is invoked when the application has loaded and is ready to run. In this
 		// method you should instantiate the window, load the UI into it and then make the window
@@ -25,7 +26,7 @@ namespace BedsideClock
 		//
 		public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
 		{
-			Model.Options options = LoadOptions();
+			LoadOptions();
 
 			// create a new window instance based on the screen size
 			window = new UIWindow(UIScreen.MainScreen.Bounds);
@@ -45,16 +46,27 @@ namespace BedsideClock
 			return true;
 		}
 
+		public override void DidEnterBackground(UIApplication application)
+		{
+			SaveOptions();
+		}
+
 		void ShowClock(object sender, EventArgs eventArgs)
 		{
 			var clockViewController = new Clock.ClockViewController();
 			rootViewController.PushViewController(clockViewController, true);
 		}
 
-		Model.Options LoadOptions()
+		void SaveOptions()
 		{
 			OptionsSerializer serializer = new OptionsSerializer();
-			return serializer.Load();
+			serializer.Save(options);
+		}
+
+		void LoadOptions()
+		{
+			OptionsSerializer serializer = new OptionsSerializer();
+			options = serializer.Load();
 		}
 	}
 }

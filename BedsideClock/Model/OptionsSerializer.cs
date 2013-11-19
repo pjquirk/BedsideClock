@@ -1,22 +1,25 @@
 using System;
+using MonoTouch.Foundation;
 
 namespace BedsideClock.Model
 {
 	public class OptionsSerializer
 	{
-		public OptionsSerializer()
-		{
-		}
-
 		public Options Load()
 		{
-			return new Options();
+			var defaults = NSUserDefaults.StandardUserDefaults;
+			return new Options {
+				Use24Hour = defaults.BoolForKey("Use24Hour"),
+				ShowSeconds = defaults.BoolForKey("ShowSeconds")
+			};
 		}
 
 		public void Save(Options options)
 		{
-			// do nothing for now
+			var defaults = NSUserDefaults.StandardUserDefaults;
+			defaults.SetBool(options.Use24Hour, "Use24Hour");
+			defaults.SetBool(options.ShowSeconds, "ShowSeconds");
+			defaults.Synchronize();
 		}
 	}
 }
-
