@@ -23,7 +23,8 @@ namespace BedsideClock.Options
 
 			use24Hour = new BooleanElement("24 hour", options.Use24Hour);
 			showSeconds = new BooleanElement("Seconds", options.ShowSeconds);
-			fontGroup = new RadioGroup("font", 0);
+			// TODO: Make this "selected" value come from the options
+			fontGroup = new RadioGroup(0);
 
 			var customFontSection = new Section("Custom");
 			customFontSection.AddAll(customFontNames.Select(f => new FontEntryElement(f)));
