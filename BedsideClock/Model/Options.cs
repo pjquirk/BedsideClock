@@ -8,10 +8,13 @@ namespace BedsideClock.Model
 
 		public bool Use24Hour { get; set; }
 
+		public string Font { get; set; }
+
 		public Options()
 		{
 			ShowSeconds = false;
 			Use24Hour = false;
+			Font = null;
 		}
 	}
 }
