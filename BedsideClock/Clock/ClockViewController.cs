@@ -8,9 +8,11 @@ namespace BedsideClock.Clock
 	{
 		readonly UILabel textView;
 		readonly Timer timer;
+		readonly Model.Options options;
 
-		public ClockViewController()
+		public ClockViewController(BedsideClock.Model.Options options)
 		{
+			this.options = options;
 			textView = new UILabel { 
 				BackgroundColor = UIColor.Black,
 				TextColor = UIColor.Green,
@@ -37,7 +39,13 @@ namespace BedsideClock.Clock
 
 		void UpdateClockText()
 		{
-			textView.Text = DateTime.Now.ToString("h:mm:ss");
+			string format;
+
+			format = options.Use24Hour ? "H:mm" : "h:mm";
+			if (options.ShowSeconds)
+				format += ":ss";
+
+			textView.Text = DateTime.Now.ToString(format);
 		}
 
 		void UpdateToDisplayOrientation(UIInterfaceOrientation interfaceOrientation)

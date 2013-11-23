@@ -53,7 +53,7 @@ namespace BedsideClock
 
 		void ShowClock(object sender, EventArgs eventArgs)
 		{
-			var clockViewController = new Clock.ClockViewController();
+			var clockViewController = new Clock.ClockViewController(optionsViewController.GetOptions());
 			rootViewController.PushViewController(clockViewController, true);
 		}
 
