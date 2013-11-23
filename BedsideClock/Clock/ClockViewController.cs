@@ -21,7 +21,11 @@ namespace BedsideClock.Clock
 				UserInteractionEnabled = true,
 				AdjustsFontSizeToFitWidth = true
 			};
-			textView.Font = textView.Font.WithSize(200);
+
+			if (options.Font != null)
+				textView.Font = UIFont.FromName(options.Font, 200);
+			else
+				textView.Font = textView.Font.WithSize(200);
 			textView.AddGestureRecognizer(new UITapGestureRecognizer(ToggleNavigationBarVisibility));
 
 			Add(textView);
