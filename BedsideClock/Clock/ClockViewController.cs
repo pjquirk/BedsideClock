@@ -16,7 +16,6 @@ namespace BedsideClock.Clock
 				TextColor = UIColor.Green,
 				Text = "12:00",
 				TextAlignment = UITextAlignment.Center,
-				Frame = UIScreen.MainScreen.Bounds,
 				UserInteractionEnabled = true,
 				AdjustsFontSizeToFitWidth = true
 			};
@@ -41,11 +40,44 @@ namespace BedsideClock.Clock
 			textView.Text = DateTime.Now.ToString("h:mm:ss");
 		}
 
+		void UpdateToDisplayOrientation(UIInterfaceOrientation interfaceOrientation)
+		{
+			switch (interfaceOrientation)
+			{
+				case UIInterfaceOrientation.LandscapeLeft:
+				case UIInterfaceOrientation.LandscapeRight:
+					textView.Frame = new System.Drawing.RectangleF(0, 0, UIScreen.MainScreen.Bounds.Height, UIScreen.MainScreen.Bounds.Width);
+					break;
+				case UIInterfaceOrientation.Portrait:
+				case UIInterfaceOrientation.PortraitUpsideDown:
+					textView.Frame = UIScreen.MainScreen.Bounds;
+					break;
+				default:
+					break;
+			}
+		}
+
+		public override void WillRotate(UIInterfaceOrientation toInterfaceOrientation, double duration)
+		{
+			UpdateToDisplayOrientation(toInterfaceOrientation);
+		}
+
+		public override UIInterfaceOrientationMask GetSupportedInterfaceOrientations()
+		{
+			return UIInterfaceOrientationMask.AllButUpsideDown;
+		}
+
+		public override UIInterfaceOrientation PreferredInterfaceOrientationForPresentation()
+		{
+			return UIInterfaceOrientation.LandscapeLeft;
+		}
+
 		public override void ViewWillAppear(bool animated)
 		{
 			UpdateClockText();
 			NavigationController.SetNavigationBarHidden(true, animated);
 			NavigationController.NavigationBar.BarStyle = UIBarStyle.Black;
+			UpdateToDisplayOrientation(InterfaceOrientation);
 			base.ViewWillAppear(animated);
 		}
 
