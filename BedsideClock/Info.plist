@@ -28,5 +28,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>LCDMB___.TTF</string>
+	</array>
 </dict>
 </plist>
