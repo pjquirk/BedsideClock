@@ -74,17 +74,17 @@ namespace BedsideClock.Clock
 
 		public override void ViewWillAppear(bool animated)
 		{
+			base.ViewWillAppear(animated);
 			UpdateClockText();
 			NavigationController.SetNavigationBarHidden(true, animated);
 			NavigationController.NavigationBar.BarStyle = UIBarStyle.Black;
 			UpdateToDisplayOrientation(InterfaceOrientation);
-			base.ViewWillAppear(animated);
 		}
 
 		public override void ViewWillDisappear(bool animated)
 		{
-			NavigationController.NavigationBar.BarStyle = UIBarStyle.Default;
 			base.ViewWillDisappear(animated);
+			NavigationController.NavigationBar.BarStyle = UIBarStyle.Default;
 		}
 
 		void ToggleNavigationBarVisibility()
