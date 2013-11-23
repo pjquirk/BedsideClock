@@ -26,10 +26,10 @@ namespace BedsideClock.Options
 			fontGroup = new RadioGroup("font", 0);
 
 			var customFontSection = new Section("Custom");
-			customFontSection.AddAll(customFontNames.Select(f => new FontEntryElement("10:27", "font", f)));
+			customFontSection.AddAll(customFontNames.Select(f => new FontEntryElement(f)));
 
 			var fontSection = new Section("Standard Fonts");
-			fontSection.AddAll(standardFontNames.Select(f => new FontEntryElement("10:27", "font", f)));
+			fontSection.AddAll(standardFontNames.Select(f => new FontEntryElement(f)));
 
 			Add(new Section("Clock Display") {
 				new StringElement("Color", "Green"),

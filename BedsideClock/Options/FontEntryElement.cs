@@ -8,7 +8,7 @@ namespace BedsideClock.Options
 	{
 		readonly string fontName;
 
-		public FontEntryElement(string caption, string group, string fontName) : base(caption, group)
+		public FontEntryElement(string fontName) : base(fontName)
 		{
 			this.fontName = fontName;
 		}
@@ -17,6 +17,7 @@ namespace BedsideClock.Options
 		{
 			var cell = base.GetCell(tv);
 			cell.TextLabel.Font = UIFont.FromName(fontName, 14);
+			cell.TextLabel.Text = string.Format("{0} - 10:27", fontName);
 			return cell;
 		}
 	}
