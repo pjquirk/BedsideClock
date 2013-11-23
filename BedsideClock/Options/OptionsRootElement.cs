@@ -4,6 +4,7 @@ using MonoTouch.UIKit;
 using MonoTouch.Dialog;
 using System.Drawing;
 using System.Collections.Generic;
+using BedsideClock.Util;
 
 namespace BedsideClock.Options
 {
@@ -23,8 +24,7 @@ namespace BedsideClock.Options
 
 			use24Hour = new BooleanElement("24 hour", options.Use24Hour);
 			showSeconds = new BooleanElement("Seconds", options.ShowSeconds);
-			// TODO: Make this "selected" value come from the options
-			fontGroup = new RadioGroup(0);
+			fontGroup = new RadioGroup(GetIndexForSelectedFont(options.Font));
 
 			var customFontSection = new Section("Custom");
 			customFontSection.AddAll(customFontNames.Select(f => new FontEntryElement(f)));
@@ -59,6 +59,13 @@ namespace BedsideClock.Options
 			}
 
 			return options;
+		}
+
+		int GetIndexForSelectedFont(string selectedFontName)
+		{
+			if (string.IsNullOrEmpty(selectedFontName))
+				return 0;
+			return customFontNames.Concat(standardFontNames).FindIndex(n => n == selectedFontName);
 		}
 	}
 }

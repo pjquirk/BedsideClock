@@ -10,7 +10,8 @@ namespace BedsideClock.Model
 			var defaults = NSUserDefaults.StandardUserDefaults;
 			return new Options {
 				Use24Hour = defaults.BoolForKey("Use24Hour"),
-				ShowSeconds = defaults.BoolForKey("ShowSeconds")
+				ShowSeconds = defaults.BoolForKey("ShowSeconds"),
+				Font = defaults.StringForKey("Font")
 			};
 		}
 
@@ -19,6 +20,7 @@ namespace BedsideClock.Model
 			var defaults = NSUserDefaults.StandardUserDefaults;
 			defaults.SetBool(options.Use24Hour, "Use24Hour");
 			defaults.SetBool(options.ShowSeconds, "ShowSeconds");
+			defaults.SetString(options.Font, "Font");
 			defaults.Synchronize();
 		}
 	}

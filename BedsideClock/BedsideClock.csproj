@@ -111,11 +111,13 @@
     <Compile Include="Model\Options.cs" />
     <Compile Include="Model\OptionsSerializer.cs" />
     <Compile Include="Options\FontEntryElement.cs" />
+    <Compile Include="Util\LinqExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Options\" />
     <Folder Include="Clock\" />
     <Folder Include="Model\" />
+    <Folder Include="Util\" />
   </ItemGroup>
 </Project>
