@@ -91,6 +91,11 @@ namespace BedsideClock.Clock
 			NavigationController.SetNavigationBarHidden(true, animated);
 			NavigationController.NavigationBar.BarStyle = UIBarStyle.Black;
 			UpdateToDisplayOrientation(InterfaceOrientation);
+
+			// Sets the brightness: 0 - dimmest, 1 - brightest
+			UIScreen.MainScreen.Brightness = 0.5f;
+			// If true, this will overlay a semi-transparent window, making everything dimmer
+			UIScreen.MainScreen.WantsSoftwareDimming = true;
 		}
 
 		public override void ViewWillDisappear(bool animated)
