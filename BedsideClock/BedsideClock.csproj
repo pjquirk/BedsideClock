@@ -112,6 +112,7 @@
     <Compile Include="Model\OptionsSerializer.cs" />
     <Compile Include="Options\FontEntryElement.cs" />
     <Compile Include="Util\LinqExtensions.cs" />
+    <Compile Include="Util\FontUtil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
